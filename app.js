@@ -88,8 +88,8 @@ const createSlider = () => {
   imagesArea.style.display = 'none';
   let duration = document.getElementById('duration').value;
   console.log(duration);
-  if(duration < 0){
-    alert('Negative duration cannot be processed. Default value will be 1000ms');
+  if(duration < 100){
+    alert('Duration is too low. Default value will be 1000ms');
     duration = 1000;
   }
   
