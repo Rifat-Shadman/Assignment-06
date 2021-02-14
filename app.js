@@ -5,7 +5,8 @@ const searchBtn = document.getElementById('search-btn');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
 const spinner = document.getElementById('loading-spinner');
-const speclink = document.getElementById('spec-link')
+const speclink = document.getElementById('spec-link');
+const imageCounter = document.getElementById('imageCounter');
 // selected image 
 let sliders = [];
 
@@ -38,11 +39,11 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
   })
-  spinnerOn(false);
+  toggleSpinner();
 }
 
 const getImages = (query) => {
-  spinnerOn(true);
+  toggleSpinner();
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
     .then(data => showImages(data.hits))
@@ -56,10 +57,12 @@ const selectItem = (event, img) => {
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
+    
   } else {
     element.classList.remove('added');
     sliders.splice(item,1);
   }
+  imageCounter.value = sliders.length;
 }
 
 var timer;
@@ -144,10 +147,11 @@ sliderBtn.addEventListener('click', function () {
 
 
 // toggle spinner 
-spinnerOn = (value) => {
+toggleSpinner = () => {
   const spinner = document.getElementById('loading-spinner');
-  if (value == false) spinner.classList.add('d-none');
-  else spinner.classList.remove('d-none');
+  // if (value == false) spinner.classList.add('d-none');
+  // else 
+  spinner.classList.toggle('d-none');
 }
 
 speclink.addEventListener('click', function(){

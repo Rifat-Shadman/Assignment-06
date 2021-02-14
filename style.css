@@ -1,5 +1,6 @@
 body{
-  background-color: rgb(174, 179, 168);
+  background-color: rgb(230, 224, 224);
+  
 }
 
 #sliders {
@@ -8,6 +9,8 @@ body{
   overflow: hidden;
   margin: 0 auto;
   position: relative;
+  border: 2px solid rgb(73, 66, 66);
+  border-radius: 5px;
 }
 
 .gallery-header {
@@ -23,7 +26,7 @@ body{
 }
 
 .added {
-  border: 2px solid #1e1743;
+  border: 4px solid #161730;
   border-radius: 5px;
 }
 
@@ -57,6 +60,19 @@ img {
 
 .main {
   display: none;
+}
+
+.single-buttons{
+  border-radius: 5px;
+  background-color: rgb(99, 59, 52);
+  padding: 6px;
+  padding-left: 2px;
+  text-decoration: none;
+  align-items: flex-end;
+  /* position: fixed; */
+}
+.single-buttons:hover{
+  background-color: rgb(99, 59, 52);
 }
 
 .specLink{
