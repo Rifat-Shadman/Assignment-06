@@ -70,7 +70,7 @@ const createSlider = () => {
   speclink.style.display = 'block'
   // check slider image length
   if (sliders.length < 2) {
-    alert('Select at least 2 image.')
+    alert('Select at least 2 images.')
     return;
   }
   // crate slider previous next area
@@ -148,10 +148,7 @@ sliderBtn.addEventListener('click', function () {
 
 
 // toggle spinner 
-toggleSpinner = () => {
-  const spinner = document.getElementById('loading-spinner');
-  // if (value == false) spinner.classList.add('d-none');
-  // else 
+const toggleSpinner = () => {
   spinner.classList.toggle('d-none');
 }
 
