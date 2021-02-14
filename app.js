@@ -86,7 +86,8 @@ const createSlider = () => {
   document.querySelector('.main').style.display = 'block';
   // hide image aria
   imagesArea.style.display = 'none';
-  let duration = document.getElementById('duration').value || 1000;
+  let duration = document.getElementById('duration').value;
+  console.log(duration);
   if(duration < 0){
     alert('Negative duration cannot be processed. Default value will be 1000ms');
     duration = 1000;
