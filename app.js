@@ -33,12 +33,18 @@ const showImages = (images) => {
   // toggleSpinner();
   // show gallery title
   galleryHeader.style.display = 'flex';
-  images.forEach(image => {
-    let div = document.createElement('div');
-    div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
-  })
+  if(images.length==0){
+    document.getElementById('empty-message').innerText = "Sorry! We couldn't find any match. Please search again..."
+  }
+  else{
+    document.getElementById('empty-message').innerText = " ";
+    images.forEach(image => {
+      let div = document.createElement('div');
+      div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
+      div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+      gallery.appendChild(div)
+    })
+  }
   toggleSpinner();
 }
 
@@ -48,6 +54,9 @@ const getImages = (query) => {
     .then(response => response.json())
     .then(data => showImages(data.hits))
     .catch(err => console.log(err))
+
+  
+  // console.log(data.hits.length);
 }
 let slideIndex = 0;
 const selectItem = (event, img) => {
